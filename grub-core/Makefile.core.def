@@ -2506,6 +2506,7 @@ module = {
   name = tpm;
   common = commands/tpm.c;
   efi = commands/efi/tpm.c;
+  efi = commands/efi/tdx.c;
   enable = x86_64_efi;
 };
 
