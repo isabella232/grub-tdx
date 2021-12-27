@@ -22,6 +22,7 @@
 #include <grub/i18n.h>
 #include <grub/efi/api.h>
 #include <grub/efi/efi.h>
+#include <grub/efi/cc.h>
 #include <grub/efi/tpm.h>
 #include <grub/mm.h>
 #include <grub/tpm.h>
@@ -227,6 +228,8 @@ grub_tpm_measure (unsigned char *buf, grub_size_t size, grub_uint8_t pcr,
 {
   grub_efi_handle_t tpm_handle;
   grub_efi_uint8_t protocol_version;
+
+  grub_cc_log_event(buf, size, pcr, description);
 
   if (!grub_tpm_handle_find (&tpm_handle, &protocol_version))
     return 0;
